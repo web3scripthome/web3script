@@ -1,0 +1,214 @@
+<Window x:Class="web3script.TaskDetailsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:web3script.ViewModels"
+        xmlns:local="clr-namespace:web3script"
+        mc:Ignorable="d"
+        Background="AliceBlue"
+        Title="任务详情" 
+        Width="900" 
+        Height="700"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        ShowInTaskbar="False"
+        WindowStyle="SingleBorderWindow"
+        Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <!--<viewModels:BooleanToSuccessTextConverter x:Key="BooleanToSuccessTextConverter"/>-->
+    </Window.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 标题区域 -->
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="任务详情" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button x:Name="BT" Content="详细日志" VerticalAlignment="Center" Click="BT_Click" Margin="700,0,0,0"/>
+        </Grid>
+        
+        <!-- 任务基本信息区域 -->
+        <Grid Grid.Row="1" Margin="0,0,0,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,10,10" Text="项目名称:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,10,10" Text="{Binding ProjectName}"/>
+
+            <TextBlock Grid.Row="0" Grid.Column="2" Margin="0,0,10,10"  Text="钱包组:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Margin="0,0,10,10"  Text="{Binding GroupName}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,10,10"  Text="创建时间:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,10,10"  Text="{Binding CreateTime}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="2" Margin="0,0,10,10"  Text="线程数:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" Grid.Column="3"  Margin="0,0,10,10" Text="{Binding ThreadCount}"/>
+            <!--<TextBlock Grid.Row="1" Grid.Column="3"  Margin="0,0,10,10" Text="{Binding ThreadCount}"/>-->
+
+
+        </Grid>
+        
+        <!-- 任务执行状态和统计信息 -->
+        <Grid Grid.Row="2" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"  Margin="0,0,20,0" Text="状态:" FontWeight="Bold"/>
+            <TextBlock Grid.Column="1"  Margin="0,0,20,0" Text="{Binding Status}"/>
+
+            <TextBlock Grid.Column="2"  Margin="0,0,20,0" Text="进度:" FontWeight="Bold"/>
+            <ProgressBar Grid.Column="3" Margin="0,0,20,0"  Value="{Binding Progress}" Maximum="100" Height="15"/>
+
+            <TextBlock Grid.Column="4"  Margin="0,0,20,0" Text="总数:" FontWeight="Bold"/>
+            <TextBlock Grid.Column="5"  Margin="0,0,20,0" Text="{Binding TotalCount}"/>
+
+            <TextBlock Grid.Column="6"  Margin="0,0,20,0" Text="成功:" FontWeight="Bold" Foreground="#389E0D"/>
+            <TextBlock Grid.Column="7"  Margin="0,0,20,0" Text="{Binding SuccessCount}" Foreground="#389E0D"/>
+
+            <TextBlock Grid.Column="8"  Margin="0,0,20,0" Text="失败:" FontWeight="Bold" Foreground="#F5222D"/>
+            <TextBlock Grid.Column="9"  Margin="0,0,20,0" Text="{Binding FailedCount}" Foreground="#F5222D"/>
+        </Grid>
+        
+        <!-- 选项卡控件 -->
+        <TabControl Grid.Row="3" Margin="0">
+            <!-- 选项卡1：执行项目 -->
+            <TabItem Header="执行项目">
+                <Border BorderBrush="LightGray" BorderThickness="1" Margin="10" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions> 
+                        <ListView Grid.Row="1" ItemsSource="{Binding ExecutionItems}" Margin="10,0,0,0" 
+                                  BorderThickness="0" Background="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,5">
+                                        <TextBlock Text="{Binding}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Border>
+            </TabItem>
+            
+            <!-- 选项卡2：执行记录 -->
+            <TabItem Header="执行记录">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10"/>
+                    
+                    <DataGrid  Grid.Row="1"
+                              ItemsSource="{Binding ExecutionRecords}"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              IsReadOnly="True"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Auto"
+                              AlternatingRowBackground="#F5F5F5"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="序号" Binding="{Binding Index}" Width="50"/>
+                            
+                            <DataGridTemplateColumn Header="钱包地址" Width="180">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock>
+                                                <Hyperlink Command="{Binding OpenExplorerCommand}" 
+                                                         ToolTip="点击在浏览器中查看">
+                                                    <TextBlock Text="{Binding WalletAddress}" VerticalAlignment="Center"/>
+                                                </Hyperlink>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                            <DataGridTextColumn Header="时间" Binding="{Binding OperationTime}" Width="150"/>
+                            <DataGridTextColumn Header="状态" Binding="{Binding Status}" Width="120"/>
+                            
+                            <!--<DataGridTemplateColumn Header="结果" Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Success, Converter={StaticResource BooleanToSuccessTextConverter}}" 
+                                                   VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Success}" Value="True">
+                                                            <Setter Property="Foreground" Value="#389E0D"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Success}" Value="False">
+                                                            <Setter Property="Foreground" Value="#F5222D"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>-->
+                            
+                            <DataGridTextColumn Header="错误信息" Binding="{Binding ErrorMessage}" Width="120"/>
+                            
+                            <DataGridTemplateColumn Header="交易哈希" Width="180">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding TransactionHash}" VerticalAlignment="Center"/>
+                                          
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                     
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window> 

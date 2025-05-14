@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web3scripSystem", "web3scripSystem.csproj", "{FBC9D970-7A0A-439C-87CC-B0F5C93639F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBC9D970-7A0A-439C-87CC-B0F5C93639F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC9D970-7A0A-439C-87CC-B0F5C93639F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC9D970-7A0A-439C-87CC-B0F5C93639F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC9D970-7A0A-439C-87CC-B0F5C93639F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {711F4B69-4165-420D-A0D5-D825ABA73B87}
+	EndGlobalSection
+EndGlobal

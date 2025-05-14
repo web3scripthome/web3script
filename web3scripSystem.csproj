@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ConScript\MitScript\TransMeme.cs" />
+    <Compile Remove="ConScript\MitScript\TransMemeChain.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MainWindow_New.cs.new" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="8.0.3" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+    <PackageReference Include="MailKit" Version="4.11.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Nethereum.HdWallet" Version="4.17.1" />
+    <PackageReference Include="System.Management" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ConScript\Humanity\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ConScript\MitScript\TransMeme.cs" />
+    <None Include="ConScript\MitScript\TransMemeChain.cs" />
+  </ItemGroup>
+
+</Project>
