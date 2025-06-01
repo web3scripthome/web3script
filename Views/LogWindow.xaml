@@ -1,0 +1,16 @@
+<Window x:Class="web3script.Views.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="日志窗口" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="Black">
+    <Grid>
+        <RichTextBox x:Name="LogTextBox" 
+                     Background="Black" 
+                     Foreground="White"
+                     IsReadOnly="True"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto"
+                     Margin="10"/>
+    </Grid>
+</Window> 

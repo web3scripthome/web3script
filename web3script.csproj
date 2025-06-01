@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="MainWindow_New.cs.new" />
+    <None Remove="SSR\ClashMeta.exe" />
+    <None Remove="tryResources\bitbug_favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bitbug_favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SSR\ClashMeta.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="tryResources\bitbug_favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="8.0.3" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+    <PackageReference Include="MailKit" Version="4.11.0" />
+    <PackageReference Include="MaterialDesignColors" Version="5.2.2-ci998" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.2-ci998" />
+    <PackageReference Include="Nethereum.StandardTokenEIP20" Version="4.29.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Nethereum.HdWallet" Version="4.17.1" />
+    <PackageReference Include="Solnet.Wallet" Version="6.1.0" />
+    <PackageReference Include="System.Management" Version="9.0.4" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ConScript\Humanity\" />
+  </ItemGroup>
+
+</Project>
