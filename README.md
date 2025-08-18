@@ -40,11 +40,11 @@ Web3Script 是一个基于 **.NET 6.0 WPF 框架** 开发的桌面端 Web3 空�
 ### 🔧 环境准备
 - 安装 [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)  
 - Windows 10 及以上系统
-- 程序包下载[web3script_windowsX86](https://github.com/web3scripthome/web3script/releases/download/v2/web3script_windowsX86.zip)
+- 脚本程序下载[web3script_windowsX86](https://github.com/web3scripthome/web3script/releases/download/v2.0.1/web3script_windowsX86.zip) (2.0.1) :添加最新AutoStaking Testnet Badge NFT支持.
 
 ## 🖥️ 使用说明
 
-- 启动后，主界面左侧为功能导航菜单，右侧为各功能面板。
+- 启动后，主界面上侧为功能导航菜单，下侧为各功能面板。
 - 支持项目批量交互、钱包批量管理、任务调度、报表导出、代理配置等。
 - 详细功能可参考界面提示与各面板说明。
 ## 🖼️ 界面展示
